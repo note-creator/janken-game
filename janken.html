@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>じゃんけんゲーム</title>
+</head>
+<body>
+  <h1>じゃんけんしよう！</h1>
+  <button onclick="play('グー')">グー</button>
+  <button onclick="play('チョキ')">チョキ</button>
+  <button onclick="play('パー')">パー</button>
+  <p id="result"></p>
+
+  <script>
+    function play(playerHand) {
+      const hands = ['グー', 'チョキ', 'パー'];
+      const cpuHand = hands[Math.floor(Math.random() * 3)];
+      let result = '';
+
+      if (playerHand === cpuHand) {
+        result = 'あいこ！';
+      } else if (
+        (playerHand === 'グー' && cpuHand === 'チョキ') ||
+        (playerHand === 'チョキ' && cpuHand === 'パー') ||
+        (playerHand === 'パー' && cpuHand === 'グー')
+      ) {
+        result = '勝ち！';
+      } else {
+        result = '負け！';
+      }
+
+      document.getElementById('result').textContent =
+        `あなた：${playerHand} / CPU：${cpuHand} → ${result}`;
+    }
+  </script>
+</body>
+</html>
